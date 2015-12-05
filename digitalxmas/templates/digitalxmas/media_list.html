@@ -1,5 +1,5 @@
 {% extends "digitalxmas/base.html" %}
-{% load staticfiles %}
+{% load staticfiles media_tags %}
 {% block extrahead %}
     <link rel="stylesheet" type="text/css" href="{% static "base/slick/slick.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "base/slick/slick-theme.css" %}" />
@@ -9,15 +9,15 @@
 <h2>Buon Natale Fabriano!</h2>
 <p class="lead">Per il nostro territorio</p>
 
-<div class="media-show">
+<div id="media-show" is_playing="false">
     {% for obj in object_list %}
-        <div><h3>{{ obj.title }}</h3></div>
+        <div>{% player obj %}</h3></div>
     {% endfor %}
 </div>
 
-<div class="media-list">
+<div id="media-list">
     {% for obj in object_list %}
-        <div><h3>{{ obj.title }}</h3></div>
+        <div class="media-thumbnail"><h3>{{ obj.title }}</h3></div>
     {% endfor %}
 </div>
 
@@ -29,19 +29,30 @@
     <script type="text/javascript" src="{% static "base/slick/slick.min.js" %}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-          $('.media-show').slick({
+          $('#media-show').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 arrows: false,
                 fade: true,
-                asNavFor: '.media-list'
+                asNavFor: '#media-list'
           });
-          $('.media-list').slick({
+          /* $('iframe #player').click(function (e) {
+              console.log('pipppo');
+              if ($('#media-show').attr('is_playing') === "false") {
+                  console.log('duuuuuupipppo');
+                  $('#media-list').slick.autoPlayClear();
+                  $('#media-show').attr('is_playing', "true");
+              } else {
+                  $('#media-list').slick.autoPlay();
+                  $('#media-show').attr('is_playing', "false");
+              }
+          }); */
+          $('#media-list').slick({
                 slidesToShow: 3,
                 slidesToScroll: 1,
-                autoplay: true,
+                autoplay: false,
                 autoplaySpeed: 2000,
-                asNavFor: '.media-show',
+                asNavFor: '#media-show',
                 centerMode: true,
                 focusOnSelect: true,
                 dots: true

@@ -22,8 +22,8 @@ class Media(models.Model):
     author_website = models.URLField(verbose_name="Pagina web dell'autore", blank=True)
 
     approved = models.BooleanField(default=False)
-    approved_on = models.DateTimeField(null=True)
-    approved_by = models.ForeignKey(User, null=True)
+    approved_on = models.DateTimeField(null=True, blank=True)
+    approved_by = models.ForeignKey(User, null=True, blank=True)
 
     def __unicode__(self):
         return self.title

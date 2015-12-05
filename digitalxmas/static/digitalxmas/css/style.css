@@ -14,7 +14,13 @@ h2 {
     margin: 20px auto;
     text-align: center;
 }
-.media-list, .media-show {
+#media-list, #media-show {
     margin: 4em 4em;
     padding: 0.5em 1em;
+}
+
+.media-thumbnail {
+    border: 1px solid white;
+    border-radius: 0.2em;
+    margin: 0px 0.5em;
 }
