@@ -1,0 +1,32 @@
+{% extends "digitalxmas/base.html" %}
+{% load staticfiles %}
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="{% static "base/slick/slick.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "base/slick/slick-theme.css" %}" />
+{% endblock %}
+
+{% block content %}
+
+<div class="media-list">
+    {% for obj in object_list %}
+        <div>{{ obj.title }}</div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block extrascripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static "//code.jquery.com/jquery-migrate-1.2.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "base/slick/slick.min.js" %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+          $('.media-list').slick(); /*{
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+          });*/
+        });
+  </script>
+{% endblock %}

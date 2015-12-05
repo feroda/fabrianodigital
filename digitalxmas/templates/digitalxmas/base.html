@@ -3,16 +3,16 @@
 <html lang="it">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Digital Christmas media content uploader</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
+    <meta name="description" content="Source code generated using layoutit.com" />
+    <meta name="author" content="LayoutIt!" />
 
-    <link href="{% static "digitalxmas/css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "digitalxmas/css/style.css" %}" rel="stylesheet">
+    <link href="{% static "digitalxmas/css/bootstrap.min.css" %}" rel="stylesheet" />
+    <link href="{% static "digitalxmas/css/style.css" %}" rel="stylesheet" />
     {% block extrahead %}
     {% endblock %}
 
@@ -127,13 +127,15 @@ echo "cicco";
 				Go and destroy your USB !
 			</button>
 		</div>
-	</div>
     {% endblock %}
+	</div>
 </div>
 
+    {% block extrascripts %}
     <script src="{% static "digitalxmas/js/jquery.min.js" %}"></script>
     <script src="{% static "digitalxmas/js/bootstrap.min.js" %}"></script>
     <script src="{% static "digitalxmas/js/scripts.js" %}"></script>
+    {% endblock %}
   </body>
 </html>
 
