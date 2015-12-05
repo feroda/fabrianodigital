@@ -5,19 +5,20 @@ from django.contrib.auth.models import User
 
 class Media(models.Model):
 
-    title = models.CharField(max_length=64)
+    title = models.CharField(max_length=64, verbose_name="Titolo")
     url = models.URLField()
-    description = models.TextField(default='', blank=True)
+    description = models.TextField(default='', blank=True, verbose_name="Descrizione")
 
     tag_place = models.CharField(
-        max_length=64, verbose_name="Territorio", blank=True,
-        help_text="Inserire il territorio di riferimento del contenuto")
+        max_length=64, verbose_name="Territorio", blank=True, default='Fabriano',
+        help_text="Territorio di riferimento del contenuto")
     tag_subject = models.CharField(
         max_length=1024, verbose_name="Temi",
-        help_text="Inserire i temi trattati separati da ',' (virgola)")
+        help_text="Temi trattati separati da ',' (virgola)")
 
-    author = models.CharField(max_length=64)
-    author_logo = models.ImageField()
+    author = models.CharField(max_length=64, verbose_name="Autore", blank=True)
+    author_logo = models.ImageField(verbose_name="Logo dell'autore", blank=True)
+    author_website = models.URLField(verbose_name="Pagina web dell'autore", blank=True)
 
     approved = models.BooleanField(default=False)
     approved_on = models.DateTimeField(null=True)
