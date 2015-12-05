@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html lang="it">
   <head>
+    <title>Digital Christmas media content uploader</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href="{% static "digitalxmas/css/bootstrap.min.css" %}" rel="stylesheet" />
+    <link href="{% static "digitalxmas/css/style.css" %}" rel="stylesheet" />
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Digital Christmas media content uploader</title>
-
     <meta name="description" content="Source code generated using layoutit.com" />
     <meta name="author" content="LayoutIt!" />
 
-    <link href="{% static "digitalxmas/css/bootstrap.min.css" %}" rel="stylesheet" />
-    <link href="{% static "digitalxmas/css/style.css" %}" rel="stylesheet" />
     {% block extrahead %}
     {% endblock %}
 
@@ -21,7 +21,6 @@
 
     <div class="container">
 	<div class="row">
-        {% block content %}
 		<div class="col-md-12">
 			<ul class="nav nav-pills">
 				<li class="active">
@@ -57,6 +56,8 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
+            <div class="mybody blue">
+        {% block content %}
 			<div class="carousel slide" id="carousel-798590">
 				<ol class="carousel-indicators">
 					<li class="active" data-slide-to="0" data-target="#carousel-798590">
@@ -116,8 +117,11 @@ echo "cicco";
 					</div> -->
 				</div> <a class="left carousel-control" href="#carousel-798590" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-798590" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 			</div>
+    {% endblock %}
+              </div>
 		</div>
 	</div>
+    {% comment %} FOOTER?
 	<div class="row">
 		<div class="col-md-6">
 		</div>
@@ -127,8 +131,8 @@ echo "cicco";
 				Go and destroy your USB !
 			</button>
 		</div>
-    {% endblock %}
 	</div>
+    {% endcomment %}
 </div>
 
     {% block extrascripts %}
