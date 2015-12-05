@@ -1,0 +1,26 @@
+{
+  "name": "fabrianodigital",
+  "version": "0.0.0",
+  "authors": [
+    "Luca Ferroni <luca@befair.it>"
+  ],
+  "description": "Fabriano Digital Champion",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "digital"
+  ],
+  "license": "AGPLv3",
+  "homepage": "http://www.fabrianodigital.it",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "slick-carousel": "~1.5.9"
+  }
+}
