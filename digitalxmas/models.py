@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 from django.contrib.auth.models import User
 
@@ -6,7 +7,7 @@ from django.contrib.auth.models import User
 class Media(models.Model):
 
     title = models.CharField(max_length=64, verbose_name="Titolo")
-    url = models.URLField()
+    url = models.URLField(unique=True)
     description = models.TextField(default='', blank=True, verbose_name="Descrizione")
 
     tag_place = models.CharField(
@@ -24,12 +25,12 @@ class Media(models.Model):
     approved_on = models.DateTimeField(null=True)
     approved_by = models.ForeignKey(User, null=True)
 
-
     def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('media-detail', kwargs={'pk': self.pk})
+
     class Meta:
         verbose_name = "contenuto multimediale"
         verbose_name_plural = "contenuti multimediali"
