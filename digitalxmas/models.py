@@ -17,6 +17,8 @@ class Media(models.Model):
         max_length=1024, verbose_name="Temi",
         help_text="Temi trattati separati da ',' (virgola)")
 
+    dedication = models.TextField(default='', blank=True, verbose_name="Dedica")
+
     author = models.CharField(max_length=64, verbose_name="Autore", blank=True)
     author_logo = models.ImageField(verbose_name="Logo dell'autore", blank=True)
     author_website = models.URLField(verbose_name="Pagina web dell'autore", blank=True)

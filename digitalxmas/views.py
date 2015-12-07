@@ -8,7 +8,7 @@ from digitalxmas.models import Media
 
 class MediaCreate(CreateView):
     model = Media
-    fields = ['url', 'title', 'tag_place', 'tag_subject', 'description', 'author', 'author_logo']
+    fields = ['url', 'title', 'tag_place', 'tag_subject', 'description', 'dedication', 'author', 'author_logo']
 
     def form_valid(request):
         super(MediaCreate, super).form_valid(request)
