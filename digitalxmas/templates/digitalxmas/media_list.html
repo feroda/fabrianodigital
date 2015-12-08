@@ -9,17 +9,20 @@
 <h2>Buon Natale Fabriano!</h2>
 <p class="lead">Per il nostro territorio</p>
 
-<div id="media-show" is_playing="false">
+<div is_playing="false">
     {% for obj in object_list %}
-        <div>{% player obj %}</h3></div>
+        <div style="width: 50%; float: left;">
+            {% player obj %}
+        </div>
+        <div class="media-info">
+            <p>{{ obj.title }}</p><br>
+            <p>{{ obj.description }}</p><br>
+            <p>{{ obj.dedication }}</p><br>
+        </div>
     {% endfor %}
 </div>
 
-<div id="media-list">
-    {% for obj in object_list %}
-        <div class="media-thumbnail"><h3>{{ obj.title }}</h3></div>
-    {% endfor %}
-</div>
+<p>Senza questo "p" si rompe tutto lo sfondo</p>
 
 {% endblock %}
 
