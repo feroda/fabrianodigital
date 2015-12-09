@@ -11,14 +11,16 @@
 
 <div is_playing="false">
     {% for obj in object_list %}
-        <div style="width: 50%; float: left;">
-            {% player obj %}
-        </div>
-        <div class="media-info">
-            <p>{{ obj.title }}</p><br>
-            <p>{{ obj.description }}</p><br>
-            <p>{{ obj.dedication }}</p><br>
-        </div>
+        {% if obj.approved %}
+            <div style="width: 50%; float: left;">
+                {% player obj %}
+            </div>
+            <div class="media-info">
+                <p>{{ obj.title }}</p><br>
+                <p>{{ obj.description }}</p><br>
+                <p>{{ obj.dedication }}</p><br>
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
 
