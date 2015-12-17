@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'bootstrapform',
     'base',
     'digitalxmas',
+    'api_v1',
 )
 
 MIDDLEWARE_CLASSES = (

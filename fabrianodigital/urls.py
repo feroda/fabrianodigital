@@ -5,4 +5,5 @@ urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'digitalxmas/', include('digitalxmas.urls')),
+    url(r'api/v1/', include('api_v1.urls')),
 )
