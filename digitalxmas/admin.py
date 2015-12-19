@@ -4,6 +4,6 @@ from digitalxmas.models import Media
 
 
 class MediaAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'author_name')
+    list_display = ('__unicode__', 'author_name', 'approved')
 
 admin.site.register(Media, MediaAdmin)
