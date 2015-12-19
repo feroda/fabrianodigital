@@ -35,6 +35,13 @@ class Media(models.Model):
     def get_absolute_url(self):
         return reverse('media-detail', kwargs={'pk': self.pk})
 
+    @property
+    def kind(self):
+        if self.url.find("youtube") != -1:
+            return "wishes_other"
+        else:
+            return "wishes_fabriano"
+
     class Meta:
         verbose_name = "contenuto multimediale"
         verbose_name_plural = "contenuti multimediali"

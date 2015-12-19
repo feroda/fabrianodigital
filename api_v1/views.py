@@ -13,9 +13,9 @@ class WishSerializer(serializers.ModelSerializer):
         model = Media
         fields = (
             'id', 'title', 'url', 'description',
-            # 'dedication', 'author_name', 'created_on'
-            'author', 'author_logo',
-            'tag_place', 'tag_subject'
+            'dedication', 'author_name', 'created_on',
+            'author_avatar',
+            'tag_place', 'tag_subject', 'kind'
         )
 
 
