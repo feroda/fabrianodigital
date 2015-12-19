@@ -1,0 +1,31 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Augura buone feste da Fabriano</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doAddFabrianoWish()">
+      <div class="list">
+          <ion-row>
+              <ion-col ng-repeat="fab_photo in fab_photos">
+                  <!-- <a href="#" ng-click="{{new_wish.url = fab_photo.url;}}"><img ng-src="{{fab_photo.url}}" height="150" /></a> -->
+                  <!-- <em>foto da {{fab_photo.author}}</em> -->
+              </ion-col>
+          </ion-row>
+        <label class="item item-input">
+          <span class="input-label">Il tuo nome</span>
+          <input type="text" ng-model="new_wish.author_name">
+        </label>
+        <label class="item item-input">
+          <span class="input-label col-center">La tua dedica</span>
+          <textarea ng-model="new_wish.dedication" rows="10" />
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Carica il tuo augurio!</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
