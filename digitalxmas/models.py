@@ -19,9 +19,10 @@ class Media(models.Model):
 
     dedication = models.TextField(default='', blank=True, verbose_name="Dedica")
 
-    author_name = models.CharField(max_length=64, verbose_name="Autore", blank=True)
-    author_avatar = models.ImageField(verbose_name="Immagine dell'autore", blank=True)
-    author_website = models.URLField(verbose_name="Pagina web dell'autore", blank=True)
+    author_name = models.CharField(max_length=64, verbose_name="autore", blank=True)
+    author_email = models.EmailField(verbose_name="email", blank=True)
+    author_avatar = models.URLField(verbose_name="link all'immagine dell'autore", blank=True)
+    author_website = models.URLField(verbose_name="pagina web dell'autore", blank=True)
 
     approved = models.BooleanField(default=False)
     approved_on = models.DateTimeField(null=True, blank=True)
