@@ -76,6 +76,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngSanitize', 'slick'
   $rootScope.config = {
       api_wishes: '/api/v1/wishes/'
   };
+  $rootScope.config = {
+      api_wishes: '/test_data/digitalxmas_api_v1_wishes_.json'
+  };
 
   $rootScope.wishes = [];
   $rootScope.kinds = [{
@@ -98,7 +101,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngSanitize', 'slick'
             // var embed_url = "http://www.youtube.com/embed/" + youtube_id + "?autoplay=0";
             // embedhtml = '<iframe width="420" height="315" src="';
             // embedhtml += embed_url + '"> </iframe>';
-        } else if (wish.kind == "wishes_fabriano") {
+        } else {
             preview.url = wish.url;
             preview.width = 420;
             preview.height = 315;
