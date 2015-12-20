@@ -76,9 +76,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngSanitize', 'slick'
   $rootScope.config = {
       api_wishes: '/api/v1/wishes/'
   };
-  $rootScope.config = {
-      api_wishes: '/test_data/digitalxmas_api_v1_wishes_.json'
-  };
 
   $rootScope.wishes = [];
   $rootScope.kinds = [{
