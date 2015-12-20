@@ -1,7 +1,6 @@
-from django.shortcuts import render
 
 from rest_framework import serializers
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
+from rest_framework import generics
 from rest_framework.renderers import JSONRenderer
 
 from digitalxmas.models import Media
@@ -19,7 +18,7 @@ class WishSerializer(serializers.ModelSerializer):
         )
 
 
-class WishCreateReadView(ListCreateAPIView):
+class WishCreateReadView(generics.ListCreateAPIView):
 
     serializer_class = WishSerializer
     queryset = Media.objects.filter(approved=True)
