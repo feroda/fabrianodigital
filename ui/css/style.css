@@ -5,6 +5,75 @@
   justify-content: center;
 }
 
+.header-item {
+    font-size: x-large !important;
+}
+
+.wish-filters .wrap-dd-select {
+    height: 100%;
+    width: 100%;
+    // background-color: #33CD5F;
+    // color: white;
+}
+
+.wish-card {
+    padding: 0px 0em 1px 0;
+    margin-bottom: 1em !important;
+    margin-top: 3em !important;
+}
+
+.wish-body {
+  height: 81%;
+  border-right: 0px solid white;
+  border-top: 0px solid white;
+  font-size: x-large;
+}
+
+.wish-top {
+    border-radius: 1em 1em 0 0;
+    border: 1px solid #3498DB;
+    margin-bottom: 0px;
+}
+
+.wish-cell {
+  padding: 0px;
+  border: 0px;
+  vertical-align: middle;
+  min-width: 480px;
+  min-height: 360px;
+}
+
+.wish-cell-right {
+    aborder-radius: 0 1em 1em 0;
+    aborder: 1px solid #3498DB;
+}
+
+.wish-row {
+    border: 0px solid #3498DB;
+    border-radius: 0em;
+    display: flex;
+    padding: 0 1px;
+}
+
+.wish-cell-preview {
+    background-color: #000;
+    background-image: url("https://www.yugma.com/images/loading-animation-7.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.img-preview {
+    width:480px;
+}
+
+.wish-bottom {
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-bottom: 0px solid white;
+    border-right: 0px solid white;
+    border-radius: 0 0 1em 0;
+}
+
 .available-scroller {
     height: 250px;
 }
@@ -23,6 +92,10 @@
 .text-middle {
     height: 8em;
 }
+
+/* .bar-margin {
+    margin-bottom: 0.5em;
+} */
 
 /* text scrolling by http://www.quackit.com/html/html_editors/scratchpad/?example=/css/codes/marquees/scrolling_text*/
 .text-scrolling {
