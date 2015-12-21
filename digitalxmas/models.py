@@ -15,7 +15,7 @@ class Media(models.Model):
         help_text="Territorio di riferimento del contenuto")
     tag_subject = models.CharField(
         max_length=1024, verbose_name="Temi",
-        help_text="Temi trattati separati da ',' (virgola)")
+        help_text="Temi trattati separati da ',' (virgola)", blank=True, default='')
 
     dedication = models.TextField(default='', blank=True, verbose_name="Dedica")
 
@@ -38,10 +38,10 @@ class Media(models.Model):
 
     @property
     def kind(self):
-        if self.url.find("youtube") != -1:
-            return "wishes_other"
-        else:
+        if self.url.find("img/fabriano") != -1:
             return "wishes_fabriano"
+        else:
+            return "wishes_other"
 
     class Meta:
         verbose_name = "contenuto multimediale"
