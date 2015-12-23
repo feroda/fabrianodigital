@@ -30,6 +30,9 @@ class Media(models.Model):
 
     created_on = models.DateTimeField(auto_now_add=True)
 
+    email_to = models.CharField(max_length=1024, blank=True, default='')
+    is_private = models.BooleanField(default=False)
+
     def __unicode__(self):
         return self.title
 
