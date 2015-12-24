@@ -9,7 +9,7 @@ from digitalxmas.models import Media
 class MediaAdmin(admin.ModelAdmin):
     list_display = (
         '__unicode__', 'author_name',
-        'approved', 'email_sent', 'is_private')
+        'approved', 'email_sent', 'is_public')
 
     actions = ['approve', 'send_by_email', 'reset_email_sent']
 

@@ -7,8 +7,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User
 
 from django.conf import settings
-
-import urllib2
+from django.template.loader import get_template
 
 
 class Media(models.Model):
@@ -48,6 +47,10 @@ class Media(models.Model):
         return '/ui/#app/wish/{}'.format(self.pk)
 
     @property
+    def is_public(self):
+        return not self.is_private
+
+    @property
     def kind(self):
         if self.url.find("img/fabriano") != -1:
             return "wishes_fabriano"
@@ -70,8 +73,11 @@ Lo puoi vedere all'indirizzo {}
 Il messaggio è stato inviato dal progetto FabrianoDigital - http://fabrianodigital.it
             """.format(self.author_name, self.dedication, abs_fullurl)
 
-            recipients = ",".split(self.email_to)
-            html_msg = urllib2.urlopen(abs_fullurl).read()
+            recipients = self.email_to.split(',')
+            html_msg = get_template("email_msg.html").render(context={
+                'obj': self,
+                'abs_fullurl': abs_fullurl,
+            })
             send_mail(
                 u"[DA FABRIANO] {}".format(self.title),
                 txt_msg, self.author_email,
