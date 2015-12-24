@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 from django.contrib.auth.models import User
 
@@ -45,6 +46,18 @@ class Media(models.Model):
             return "wishes_fabriano"
         else:
             return "wishes_other"
+
+    def save(self, *args, **kw):
+
+        if self.pk:
+            old = Media.objects.get(pk=self.pk)
+            if old.approved != self.approved:
+                if self.approved and not self.approved_on:
+                    self.approved_on = timezone.now()
+                else:
+                    self.approved_on = None
+
+        super(Media, self).save(*args, **kw)
 
     class Meta:
         verbose_name = "contenuto multimediale"
