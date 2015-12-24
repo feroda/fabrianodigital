@@ -1,8 +1,14 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
-from django.core.urlresolvers import reverse
 from django.utils import timezone
 
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
+
+from django.conf import settings
+
+import urllib2
 
 
 class Media(models.Model):
@@ -33,12 +39,13 @@ class Media(models.Model):
 
     email_to = models.CharField(max_length=1024, blank=True, default='')
     is_private = models.BooleanField(default=False)
+    email_sent = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('media-detail', kwargs={'pk': self.pk})
+        return '/ui#app/wish/{}'.format(self.pk)
 
     @property
     def kind(self):
@@ -46,6 +53,33 @@ class Media(models.Model):
             return "wishes_fabriano"
         else:
             return "wishes_other"
+
+    def send_by_email(self):
+        if self.email_to:
+            abs_fullurl = settings.ABS_URL + self.get_absolute_url()
+            txt_msg = """
+Ciao!
+
+{} ti ha spedito un augurio da Fabriano.
+
+Lo puoi vedere all'indirizzo {}{}
+
+---
+Il messaggio è stato inviato dal progetto FabrianoDigital - http://fabrianodigital.it
+            """.format(self.author_name, abs_fullurl)
+
+            recipients = ",".split(self.email_to)
+            html_msg = urllib2.urlopen(abs_fullurl).read()
+            send_mail(
+                u"[DA FABRIANO] {}".format(self.title),
+                txt_msg, self.author_email,
+                recipients, fail_silently=False,
+                html_message=html_msg)
+            self.email_sent = True
+            self.save()
+
+        else:
+            raise ValueError("nessun destinatario specificato")
 
     def save(self, *args, **kw):
 
