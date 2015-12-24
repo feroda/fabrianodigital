@@ -30,13 +30,13 @@ class MediaAdmin(admin.ModelAdmin):
                     messages.info(request, u"Email già inviata per {}".format(obj))
             else:
                 messages.info(request, u"Destinatari non impostati per {}".format(obj))
-    send_by_email.short_description = "Invia auguri via email"
+    send_by_email.short_description = "Invia gli auguri via email"
 
     def reset_email_sent(self, request, queryset):
 
         for obj in queryset:
             obj.email_sent = False
             obj.save()
-    send_by_email.short_description = "Azzera l'invio email"
+    reset_email_sent.short_description = "Azzera l'invio email"
 
 admin.site.register(Media, MediaAdmin)

@@ -45,7 +45,7 @@ class Media(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return '/ui#app/wish/{}'.format(self.pk)
+        return '/ui/#app/wish/{}'.format(self.pk)
 
     @property
     def kind(self):
@@ -62,11 +62,13 @@ Ciao!
 
 {} ti ha spedito un augurio da Fabriano.
 
-Lo puoi vedere all'indirizzo {}{}
+{}
+
+Lo puoi vedere all'indirizzo {}
 
 ---
 Il messaggio è stato inviato dal progetto FabrianoDigital - http://fabrianodigital.it
-            """.format(self.author_name, abs_fullurl)
+            """.format(self.author_name, self.dedication, abs_fullurl)
 
             recipients = ",".split(self.email_to)
             html_msg = urllib2.urlopen(abs_fullurl).read()
