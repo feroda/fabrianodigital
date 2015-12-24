@@ -21,5 +21,5 @@ class WishSerializer(serializers.ModelSerializer):
 class WishCreateReadView(generics.ListCreateAPIView):
 
     serializer_class = WishSerializer
-    queryset = Media.objects.filter(approved=True)
+    queryset = Media.objects.filter(approved=True, is_private=False)
     renderer_classes = (JSONRenderer, )
