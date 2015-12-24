@@ -26,6 +26,7 @@ class MediaAdmin(admin.ModelAdmin):
             if obj.email_to:
                 if not obj.email_sent:
                     obj.send_by_email()
+                    messages.info(request, u'Complimenti! Hai appena inviato per email "{}"'.format(obj))
                 else:
                     messages.info(request, u"Email già inviata per {}".format(obj))
             else:

@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User
 
 from django.conf import settings
-from django.template.loader import get_template
+from django.template.loader import render_to_string
 
 
 class Media(models.Model):
@@ -47,6 +47,23 @@ class Media(models.Model):
         return '/ui/#app/wish/{}'.format(self.pk)
 
     @property
+    def wish_full_url(self):
+        if self.url.startswith("http"):
+            return self.url
+        else:
+            if settings.ABS_URL.endswith('/'):
+                if self.url.startswith('/'):
+                    url = settings.ABS_URL[:-1] + self.url
+                else:
+                    url = settings.ABS_URL + self.url
+            else:
+                if self.url.startswith('/'):
+                    url = settings.ABS_URL + self.url
+                else:
+                    url = settings.ABS_URL + '/' + self.url
+            return url
+
+    @property
     def is_public(self):
         return not self.is_private
 
@@ -74,7 +91,7 @@ Il messaggio è stato inviato dal progetto FabrianoDigital - http://fabrianodigi
             """.format(self.author_name, self.dedication, abs_fullurl)
 
             recipients = self.email_to.split(',')
-            html_msg = get_template("email_msg.html").render(context={
+            html_msg = render_to_string("digitalxmas/email_msg.html", {
                 'obj': self,
                 'abs_fullurl': abs_fullurl,
             })

@@ -1,147 +1,30 @@
+{% load media_tags %}
 <!DOCTYPE html>
 
 <html lang="it">
     <head>
-        <style type="text/css">
-/* Empty. Add your own CSS if you like */
-.photo {
-      //display: flex;
-        //align-items: center;
-          //justify-content: center;
-            width: 100%;
-}
-
-.header-item {
-        font-size: x-large !important;
-}
-
-.wish-filters .wrap-dd-select {
-        height: 100%;
-                width: 100%;
-                        // background-color: #33CD5F;
-                            // color: white;
-}
-
-.wish-card {
-        padding: 0.1em;
-                margin-bottom: 1em !important;
-                        margin-top: 3em !important;
-                                border: 1px solid #3498DB;
-                                        border-radius: 1em 1em 0 0;
-}
-
-.wish-body {
-        height: 79%;
-                border: 0px solid white;
-                        font-size: x-large;
-                                text-overflow: clip;
-                                        white-space: normal;
-                                                line-height: 1.2em;
-}
-
-
-.wish-top {
-        background-color: white;
-                border-bottom: 1px solid #3498DB;
-                        margin-bottom: 0px;
-                                text-align: center;
-                                        border-radius: 1em 1em 0 0;
-}
-
-.wish-cell {
-      padding: 0px;
-            border: 0px;
-                  vertical-align: middle;
-                        //min-width: 480px;
-                          //min-height: 360px;
-}
-
-.wish-cell-right {
-        border-bottom: 1px solid #3498DB;
-                margin-left: 0.1em;
-}
-
-.wish-row {
-        border: 0px solid #3498DB;
-                border-radius: 0em;
-                        display: flex;
-                                padding: 0 1px;
-}
-
-.wish-cell-preview {
-        background-color: #000;
-                background-image: url("https://www.yugma.com/images/loading-animation-7.gif");
-                        background-repeat: no-repeat;
-                                background-position: center;
-                                        border-right: 1px solid white;
-}
-
-.wish-detail .wish-cell-preview {
-        background-color: white;
-                background-repeat: repeat;
-                        padding: 0.5em !important;
-                                margin: 0.1em;
-}
-
-.img-preview {
-        width:480px;
-}
-
-.wish-bottom {
-        border-left: 0px solid white;
-                border-bottom: 0px solid white;
-                        border-right: 0px solid white;
-}
-
-.available-scroller {
-        height: 250px;
-}
-
-.item-input input, .item-input textarea {
-        border: 1px dashed #387EF5;
-                border-radius: 0.2em;
-                        margin-right: 0.5em;
-}
-.boxsizingBorder {
-        -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                        box-sizing: border-box;
-}
-
-.text-middle {
-        height: 8em;
-}
-
-/* .bar-margin {
-       margin-bottom: 0.5em;
-} */
-        </style>
     </head>
     <body>
         <h3>Ciao!</h3>
 
         <p>{{obj.author_name}} ti ha spedito un augurio da Fabriano.</p>
 
-{% if not obj.is_private %}
-<p>Lo puoi vedere all'indirizzo <a href="{{abs_fullurl}}">{{abs_fullurl}}</a></p>
-{% endif %}
+        <p>Lo puoi vedere all'indirizzo <a href="{{abs_fullurl}}">{{abs_fullurl}}</a></p>
 
 <div class="wish-card wish-detail">
     <h3 class="item-divider wish-top ng-binding">{{obj.title}}</h3>
     <div class="item wish-cell wish-cell-preview" id="wish-{{obj.pk}}">
-        <img src="{{obj.url}}" class="photo">
+        {% preview obj %}
     </div>
     <div class="col wish-cell blue wish-cell-right">
         <div class="item wish-body blue">
-            <em>"E' Natale da fine ottobre. Le lucette si accendono sempre prima,
-
-mentre le persone sono sempre più intermittenti.
-
-Io vorrei un dicembre a luci spente e con le persone accese." C.B.</em>
+            <em>{{obj.dedication}}</em>
         </div>
         <div class="item item-avatar wish-bottom blue">
-        <img src="http://www.fabricamenti.it/images/logo.jpg" ng-src="http://www.fabricamenti.it/images/logo.jpg">
-        <em class="ng-binding">{{obj.author_name}}</em>
+        {% if obj.author_logo %}
+            <img src="{{obj.author_logo}}">
+        {% endif %}
+        <em>{{obj.author_name}}</em>
                <p ></p>
     </div>
     </div>
