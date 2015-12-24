@@ -3,7 +3,7 @@
 from django.db import models
 from django.utils import timezone
 
-from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth.models import User
 
 from django.conf import settings
@@ -77,7 +77,7 @@ class Media(models.Model):
     def send_by_email(self):
         if self.email_to:
             abs_fullurl = settings.ABS_URL + self.get_absolute_url()
-            txt_msg = """
+            txt_msg = u"""
 Ciao!
 
 {} ti ha spedito un augurio da Fabriano.
@@ -95,11 +95,11 @@ Il messaggio è stato inviato dal progetto FabrianoDigital - http://fabrianodigi
                 'obj': self,
                 'abs_fullurl': abs_fullurl,
             })
-            send_mail(
+            eml = EmailMultiAlternatives(
                 u"[DA FABRIANO] {}".format(self.title),
-                txt_msg, self.author_email,
-                recipients, fail_silently=False,
-                html_message=html_msg)
+                txt_msg, self.author_email, bcc=recipients)
+            eml.attach_alternative(html_msg, 'text/html')
+            eml.send()
             self.email_sent = True
             self.save()
 
