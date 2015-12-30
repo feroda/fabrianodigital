@@ -9843,3 +9843,15 @@ a.button {
   border: 1px dashed #387EF5;
   border-radius: 0.2em;
   margin-right: 0.5em; }
+
+.xmastree:before {
+  content: url("/img/icons/xmastree.png"); }
+
+.xmastree-active:before {
+  content: url("/img/icons/xmastree-active.png"); }
+
+.partnership:before {
+  content: url("/img/icons/partnership.png"); }
+
+.partnership-active:before {
+  content: url("/img/icons/partnership-active.png"); }
