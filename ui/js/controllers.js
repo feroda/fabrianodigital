@@ -30,6 +30,11 @@ angular.module('starter.controllers', [])
     $scope.new_wish.url = src;
     $scope.new_wish.preview_url = preview_url;
     $scope.modal.show();
+
+    if(src != null)
+        $('.modal-backdrop').css('background', 'url(' + src + ') fixed center center/cover ');
+    else
+        $('.modal-backdrop').css('background', 'black');
   };
 
     // IDs
@@ -53,6 +58,11 @@ angular.module('starter.controllers', [])
         photo: $rootScope.config.base_url + 'test_data/fabricamenti.png',
         name: 'Fabricamenti',
         url: 'http://www.fabricamenti.it/'
+    },{
+        id: 1,
+        photo: 'http://pdp.linux.it/wp-content/uploads/logoPDP_web.jpg',
+        name: 'PDP Free Software User Group',
+        url: 'http://pdp.linux.it'
     },{
         id: 2,
         photo: $rootScope.config.base_url + 'img/fabriano/matteomingo.jpg',
