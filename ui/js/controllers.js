@@ -107,6 +107,10 @@ angular.module('starter.controllers', [])
         id: 3,
         photo: $rootScope.config.base_url + 'img/partners/marko.jpg',
         name: 'Matteo Micheletti'
+    },{
+        id: 3,
+        photo: $rootScope.config.base_url + 'img/partners/lorenzofar.jpg',
+        name: 'Lorenzo Farinelli'
     }];
 
 
@@ -157,13 +161,25 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+  // Perform the login action when the user submits the login form
+  $scope.AddPhoto = function() {
+    console.log('Adding photo...', fileToUpload.value);
+
+    $http.post($rootScope.config.api_wishes, fileToUpload.value)
+        .then(function successCallback(response) {
+            alert("Foto aggiunta!");
+        }, function errorCallback(response) {
+            alert("Foto non aggiunta");
+        });
+  };
 })
 
 .controller('DetailCtrl', function($scope, $stateParams, $rootScope) {
 
     $scope.wish = {
         "title": "Augurio non trovato",
-        "dedication":"L'augurio che cerchi non è stato trovato, ma ti augiriamo comunque buone feste!",
+        "dedication":"L'augurio che cerchi non è stato trovato, ma ti auguriamo comunque buone feste!",
         "url":"",
         "description":"",
         "author_name":"Makerspace",
